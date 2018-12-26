@@ -1,0 +1,19 @@
+<main>
+  <section class="hero jumbotron">
+    <div class="offset-md-1 col-md-5 col-sm-8 col-9">
+      <span class="hero__dots" />
+      <h1 class="hero__title text-left">Only the highest quality of fruits will truly satisfy you</h1>
+      <p class="hero__sub text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque corrupti asperiores facere, dolores consequatur dicta at obcaecati, quidem alias quo fuga libero tenetur recusandae sint velit id. Explicabo, consequatur illum!</p>
+    </div>
+  </section>
+  <section class="container my-5" v-if="products.length">
+    <h2 class="text-center text-uppercase font-weight-bold mb-5">Our featured products</h2>
+    <div class="row justify-content-center">
+      <Product
+        v-for="product in products"
+        :key="product._id"
+        :product="product"
+      />
+    </div>
+  </section>
+</main>

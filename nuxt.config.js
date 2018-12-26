@@ -9,6 +9,7 @@ module.exports = {
   */
   head: {
     title: pkg.name,
+    script: [{ src: 'https://js.stripe.com/v3/' }],
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -20,17 +21,37 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: {
+    color: '#000',
+  },
+
+  toast: {
+    position: 'top-center',
+    duration: 2000,
+    singleton: true,
+  },
 
   /*
   ** Global CSS
   */
-  css: [],
+  css: [
+    '@/assets/_animations.scss',
+    '@/assets/_stripe.scss',
+  ],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [],
+  plugins: [
+    {
+      src: '~plugins/stripe-checkout',
+      ssr: false,
+    },
+    {
+      src: '~/plugins/vuex-persist',
+      ssr: false,
+    }
+  ],
 
   /*
   ** Nuxt.js modules
@@ -38,9 +59,9 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
-    // Doc:https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/toast',
+    'bootstrap-vue/nuxt',
   ],
   /*
   ** Axios module configuration

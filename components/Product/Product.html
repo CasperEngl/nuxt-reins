@@ -1,0 +1,22 @@
+<div class="col-md-4 col-sm-6 my-2">
+  <article class="product">
+    <nuxt-link :to="productLink">
+      <figure v-if="product.images.length" @click="modalActive = true">
+        <img
+          :src="product.images[0].src"
+          :alt="product.images[0].alt"
+        >
+      </figure>
+      <h3>{{ product.name }}</h3>
+    </nuxt-link>
+    <footer class="d-flex align-items-center justify-content-between">
+      <div
+        v-html="product.price_html"
+        class="price"
+      />
+      <button class="btn btn-primary" @click="addToCart(product)">
+        Add to Cart
+      </button>
+    </footer>
+  </article>
+</div>

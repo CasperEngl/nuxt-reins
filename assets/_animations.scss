@@ -1,0 +1,40 @@
+@keyframes revealTitle {
+  0% {
+    left: 0;
+    width: 0%;
+  }
+
+  50% {
+    left: 0;
+    width: 100%;
+  }
+
+  51% {
+    left: auto;
+  }
+
+  100% {
+    left: auto;
+    right: 0;
+    width: 0%;
+    visibility: hidden
+  }
+}
+
+@keyframes hideTitleWhileRevealing {
+  0% {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  50% {
+    color: rgba(0, 0, 0, 0);
+  }
+
+  51% {
+    color: inherit;
+  }
+
+  100% {
+    color: inherit;
+  }
+}

@@ -1,55 +1,38 @@
 <template>
   <div class="app">
-    <nav
-      class="navbar"
-      role="navigation"
-      aria-label="main navigation"
+    <b-navbar
+      toggleable="md"
+      type="light"
+      variant="white"
     >
-      <div class="navbar-brand">
-        <nuxt-link
-          to="/"
-          class="navbar-item"
-        >
-          Reins
-        </nuxt-link>
-        
-        <a
-          :class="{ 'is-active' : navOpen }"
-          role="button"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbar"
-          @click="toggleNav()"
-        >
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-          <span aria-hidden="true" />
-        </a>
-      </div>
-
-      <div
-        id="navbar"
-        :class="{ 'is-active' : navOpen }"
-        class="navbar-menu"
+      <b-link
+        to="/"
+        class="navbar-brand"
       >
-        <div class="navbar-end">
-          <nuxt-link
+        Reins
+      </b-link>
+      <b-navbar-toggle
+        :class="{ active: navOpen }"
+        target="nav_collapse"
+        @click="toggleNav"
+      />
+
+      <b-collapse
+        id="nav_collapse"
+        is-nav
+      >
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item
             to="/"
-            class="navbar-item"
+            exact
           >
             Home
-          </nuxt-link>
-          <nuxt-link
-            to="/products"
-            class="navbar-item"
-          >
-            Products
-          </nuxt-link>
-        </div>
-
-      </div>
-    </nav>
+          </b-nav-item>
+          <b-nav-item to="/products">Products</b-nav-item>
+          <b-nav-item to="/cart">Cart</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
     <nuxt/>
   </div>
 </template>
@@ -64,9 +47,9 @@ export default {
     }
   },
   mounted() {
-    this.getProducts()
-    this.getCart()
-    this.getCartTotals()
+    // this.getProducts()
+    // this.getCart()
+    // this.getCartTotals()
   },
   methods: {
     ...mapActions(['getProducts', 'getCart', 'getCartTotals']),

@@ -1,0 +1,24 @@
+<main class="section product">
+  <div class="container">
+    <section
+      v-if="product"
+      class="row"
+    >
+      <figure
+        v-if="product.images.length"
+        class="col-md-6"
+      >
+        <img
+          :src="product.images[0].src"
+          :alt="product.images[0].alt"
+        >
+      </figure>
+
+      <article class="col-md-6">
+        <h1>{{ product.name }}</h1>
+        <p v-html="product.price_html"></p>
+      </article>
+    </section>
+  </div>
+</main>
+  

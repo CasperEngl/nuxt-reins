@@ -1,0 +1,14 @@
+<main>
+  <section class="section products container my-5">
+    <div
+      v-if="products"
+      class="row"
+    >
+      <Product
+        v-for="product in products"
+        :key="product._id"
+        :product="product"
+      />
+    </div>
+  </section>
+</main>

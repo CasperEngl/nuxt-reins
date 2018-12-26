@@ -1,0 +1,11 @@
+figure {
+  height: 20rem;
+  display: flex;
+  align-items: center;
+
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}

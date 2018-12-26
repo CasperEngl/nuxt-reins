@@ -1,0 +1,72 @@
+<main>
+  <section class="hero jumbotron" v-if="cartTotal">
+    <h1 class="hero__title">Cart</h1>
+  </section>
+  <div class="container mt-5" v-if="cartTotal">
+    <ul class="list-group">
+      <li
+        v-for="product in cart"
+        class="list-group-item list-group-item-action my-1"
+      >
+        <div class="row justify-content-between align-items-center">
+          <div class="d-flex align-items-center col-auto">
+            <p class="product__name h4 m-0">{{ product.name }}</p>
+            <span class="h5 text-muted m-0 ml-3">30 DKK</span>
+          </div>
+          <div class="d-flex align-items-center col-auto">
+            <input
+              class="form-control d-inline-block text-center"
+              type="number"
+              v-model="product.count"
+              style="width: 100px;"
+            />
+            <button class="btn btn-link" @click="removeItem(product)">
+              Remove
+            </button>
+          </div>
+        </div>
+      </li>            
+    </ul>
+  </div>
+  <div class="container my-3" v-if="cartTotal">
+    <div class="row justify-content-end">
+      <div class="col-sm-6 d-flex flex-column align-items-end">
+        <table class="table border">
+          <tbody>
+            <!-- <tr class="bg-light">
+              <td>Subtotal</td>
+              <td>30 DKK</td>
+            </tr>
+            <tr class="bg-light">
+              <td>Shipping total</td>
+              <td>30 DKK</td>
+            </tr> -->
+            <tr class="bg-white">
+              <td>Total</td>
+              <td>{{ totalCost }} DKK</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <Card
+      class='stripe-card'
+      :class='{ complete }'
+      :stripe='stripeKey'
+      :options='stripeOptions'
+      hidePostalCode="true"
+      @change='complete = $event.complete'
+    />
+    <button class='pay-with-stripe btn btn-primary mt-4' @click='pay' :disabled='!complete'>Pay with credit card</button>
+    <pre v-html="JSON.stringify(stripeData, null, 2)" class="m-3 w-100 ml-auto"></pre>
+  </div>
+  <section class="jumbotron m-0 d-flex align-items-center animated fadeIn delay-1s" style="height: calc(100vh - 56px);" v-else>
+    <div class="container">
+      <h1 class="hero__title">
+        Would you look at the time! <br>
+        No items in your cart, time to get something in there.
+      </h1>
+      <p class="h4 mt-4 text-center text-white">Go to <nuxt-link to="/products" class="text-white font-weight-bold text-uppercase"><u>shop</u></nuxt-link></p>
+    </div>
+  </section>
+</main>
