@@ -32,7 +32,7 @@ export default {
   methods: {
     removeItem(item) {
       this.$store.commit('removeItem', item)
-      this.$toast.info('Removed item from cart')
+      this.$toast.success(`Removed '${item.name}' from cart`)
     },
     async pay () {      
       try {
